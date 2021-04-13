@@ -1,0 +1,12 @@
+server:
+  port: 2039
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: 12138
+    url: jdbc:mysql://localhost:3306/digit_office?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=UTF-8
+mybatis:
+  mapper-locations: classpath*:mybatis/**Mapper.xml
+  type-aliases-package: com.fatehole.office.model
