@@ -1,19 +1,19 @@
 package com.fatehole.office.mapper;
 
-import com.fatehole.office.model.Politicsstatus;
+import com.fatehole.office.model.PoliticsStatus;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface PoliticsstatusMapper {
+public interface PoliticsStatusMapper {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(Politicsstatus record);
+    int insert(PoliticsStatus record);
 
-    int insertSelective(Politicsstatus record);
+    int insertSelective(PoliticsStatus record);
 
-    Politicsstatus selectByPrimaryKey(Integer id);
+    PoliticsStatus selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(Politicsstatus record);
+    int updateByPrimaryKeySelective(PoliticsStatus record);
 
-    int updateByPrimaryKey(Politicsstatus record);
+    int updateByPrimaryKey(PoliticsStatus record);
 }

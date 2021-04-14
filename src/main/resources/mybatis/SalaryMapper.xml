@@ -3,23 +3,23 @@
 <mapper namespace="com.fatehole.office.mapper.SalaryMapper" >
   <resultMap id="BaseResultMap" type="com.fatehole.office.model.Salary" >
     <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="basicSalary" property="basicsalary" jdbcType="INTEGER" />
-    <result column="bonus" property="bonus" jdbcType="INTEGER" />
-    <result column="lunchSalary" property="lunchsalary" jdbcType="INTEGER" />
-    <result column="trafficSalary" property="trafficsalary" jdbcType="INTEGER" />
-    <result column="allSalary" property="allsalary" jdbcType="INTEGER" />
-    <result column="pensionBase" property="pensionbase" jdbcType="INTEGER" />
-    <result column="pensionPer" property="pensionper" jdbcType="REAL" />
-    <result column="createDate" property="createdate" jdbcType="TIMESTAMP" />
-    <result column="medicalBase" property="medicalbase" jdbcType="INTEGER" />
-    <result column="medicalPer" property="medicalper" jdbcType="REAL" />
-    <result column="accumulationFundBase" property="accumulationfundbase" jdbcType="INTEGER" />
-    <result column="accumulationFundPer" property="accumulationfundper" jdbcType="REAL" />
     <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="basic_salary" property="basicSalary" jdbcType="INTEGER" />
+    <result column="bonus" property="bonus" jdbcType="INTEGER" />
+    <result column="lunch_salary" property="lunchSalary" jdbcType="INTEGER" />
+    <result column="traffic_salary" property="trafficSalary" jdbcType="INTEGER" />
+    <result column="all_salary" property="allSalary" jdbcType="INTEGER" />
+    <result column="pension_base" property="pensionBase" jdbcType="INTEGER" />
+    <result column="pension_ratio" property="pensionRatio" jdbcType="REAL" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="medical_base" property="medicalBase" jdbcType="INTEGER" />
+    <result column="medical_ratio" property="medicalRatio" jdbcType="REAL" />
+    <result column="provident_fund_base" property="providentFundBase" jdbcType="INTEGER" />
+    <result column="provident_fund_ratio" property="providentFundRatio" jdbcType="REAL" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, basicSalary, bonus, lunchSalary, trafficSalary, allSalary, pensionBase, pensionPer, 
-    createDate, medicalBase, medicalPer, accumulationFundBase, accumulationFundPer, name
+    id, name, basic_salary, bonus, lunch_salary, traffic_salary, all_salary, pension_base, 
+    pension_ratio, create_date, medical_base, medical_ratio, provident_fund_base, provident_fund_ratio
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -32,16 +32,16 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.fatehole.office.model.Salary" >
-    insert into salary (id, basicSalary, bonus, 
-      lunchSalary, trafficSalary, allSalary, 
-      pensionBase, pensionPer, createDate, 
-      medicalBase, medicalPer, accumulationFundBase, 
-      accumulationFundPer, name)
-    values (#{id,jdbcType=INTEGER}, #{basicsalary,jdbcType=INTEGER}, #{bonus,jdbcType=INTEGER}, 
-      #{lunchsalary,jdbcType=INTEGER}, #{trafficsalary,jdbcType=INTEGER}, #{allsalary,jdbcType=INTEGER}, 
-      #{pensionbase,jdbcType=INTEGER}, #{pensionper,jdbcType=REAL}, #{createdate,jdbcType=TIMESTAMP}, 
-      #{medicalbase,jdbcType=INTEGER}, #{medicalper,jdbcType=REAL}, #{accumulationfundbase,jdbcType=INTEGER}, 
-      #{accumulationfundper,jdbcType=REAL}, #{name,jdbcType=VARCHAR})
+    insert into salary (id, name, basic_salary, 
+      bonus, lunch_salary, traffic_salary, 
+      all_salary, pension_base, pension_ratio, 
+      create_date, medical_base, medical_ratio, 
+      provident_fund_base, provident_fund_ratio)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{basicSalary,jdbcType=INTEGER}, 
+      #{bonus,jdbcType=INTEGER}, #{lunchSalary,jdbcType=INTEGER}, #{trafficSalary,jdbcType=INTEGER}, 
+      #{allSalary,jdbcType=INTEGER}, #{pensionBase,jdbcType=INTEGER}, #{pensionRatio,jdbcType=REAL}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{medicalBase,jdbcType=INTEGER}, #{medicalRatio,jdbcType=REAL}, 
+      #{providentFundBase,jdbcType=INTEGER}, #{providentFundRatio,jdbcType=REAL})
   </insert>
   <insert id="insertSelective" parameterType="com.fatehole.office.model.Salary" >
     insert into salary
@@ -49,151 +49,151 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="basicsalary != null" >
-        basicSalary,
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="basicSalary != null" >
+        basic_salary,
       </if>
       <if test="bonus != null" >
         bonus,
       </if>
-      <if test="lunchsalary != null" >
-        lunchSalary,
+      <if test="lunchSalary != null" >
+        lunch_salary,
       </if>
-      <if test="trafficsalary != null" >
-        trafficSalary,
+      <if test="trafficSalary != null" >
+        traffic_salary,
       </if>
-      <if test="allsalary != null" >
-        allSalary,
+      <if test="allSalary != null" >
+        all_salary,
       </if>
-      <if test="pensionbase != null" >
-        pensionBase,
+      <if test="pensionBase != null" >
+        pension_base,
       </if>
-      <if test="pensionper != null" >
-        pensionPer,
+      <if test="pensionRatio != null" >
+        pension_ratio,
       </if>
-      <if test="createdate != null" >
-        createDate,
+      <if test="createDate != null" >
+        create_date,
       </if>
-      <if test="medicalbase != null" >
-        medicalBase,
+      <if test="medicalBase != null" >
+        medical_base,
       </if>
-      <if test="medicalper != null" >
-        medicalPer,
+      <if test="medicalRatio != null" >
+        medical_ratio,
       </if>
-      <if test="accumulationfundbase != null" >
-        accumulationFundBase,
+      <if test="providentFundBase != null" >
+        provident_fund_base,
       </if>
-      <if test="accumulationfundper != null" >
-        accumulationFundPer,
-      </if>
-      <if test="name != null" >
-        name,
+      <if test="providentFundRatio != null" >
+        provident_fund_ratio,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="basicsalary != null" >
-        #{basicsalary,jdbcType=INTEGER},
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="basicSalary != null" >
+        #{basicSalary,jdbcType=INTEGER},
       </if>
       <if test="bonus != null" >
         #{bonus,jdbcType=INTEGER},
       </if>
-      <if test="lunchsalary != null" >
-        #{lunchsalary,jdbcType=INTEGER},
+      <if test="lunchSalary != null" >
+        #{lunchSalary,jdbcType=INTEGER},
       </if>
-      <if test="trafficsalary != null" >
-        #{trafficsalary,jdbcType=INTEGER},
+      <if test="trafficSalary != null" >
+        #{trafficSalary,jdbcType=INTEGER},
       </if>
-      <if test="allsalary != null" >
-        #{allsalary,jdbcType=INTEGER},
+      <if test="allSalary != null" >
+        #{allSalary,jdbcType=INTEGER},
       </if>
-      <if test="pensionbase != null" >
-        #{pensionbase,jdbcType=INTEGER},
+      <if test="pensionBase != null" >
+        #{pensionBase,jdbcType=INTEGER},
       </if>
-      <if test="pensionper != null" >
-        #{pensionper,jdbcType=REAL},
+      <if test="pensionRatio != null" >
+        #{pensionRatio,jdbcType=REAL},
       </if>
-      <if test="createdate != null" >
-        #{createdate,jdbcType=TIMESTAMP},
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="medicalbase != null" >
-        #{medicalbase,jdbcType=INTEGER},
+      <if test="medicalBase != null" >
+        #{medicalBase,jdbcType=INTEGER},
       </if>
-      <if test="medicalper != null" >
-        #{medicalper,jdbcType=REAL},
+      <if test="medicalRatio != null" >
+        #{medicalRatio,jdbcType=REAL},
       </if>
-      <if test="accumulationfundbase != null" >
-        #{accumulationfundbase,jdbcType=INTEGER},
+      <if test="providentFundBase != null" >
+        #{providentFundBase,jdbcType=INTEGER},
       </if>
-      <if test="accumulationfundper != null" >
-        #{accumulationfundper,jdbcType=REAL},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
+      <if test="providentFundRatio != null" >
+        #{providentFundRatio,jdbcType=REAL},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.fatehole.office.model.Salary" >
     update salary
     <set >
-      <if test="basicsalary != null" >
-        basicSalary = #{basicsalary,jdbcType=INTEGER},
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="basicSalary != null" >
+        basic_salary = #{basicSalary,jdbcType=INTEGER},
       </if>
       <if test="bonus != null" >
         bonus = #{bonus,jdbcType=INTEGER},
       </if>
-      <if test="lunchsalary != null" >
-        lunchSalary = #{lunchsalary,jdbcType=INTEGER},
+      <if test="lunchSalary != null" >
+        lunch_salary = #{lunchSalary,jdbcType=INTEGER},
       </if>
-      <if test="trafficsalary != null" >
-        trafficSalary = #{trafficsalary,jdbcType=INTEGER},
+      <if test="trafficSalary != null" >
+        traffic_salary = #{trafficSalary,jdbcType=INTEGER},
       </if>
-      <if test="allsalary != null" >
-        allSalary = #{allsalary,jdbcType=INTEGER},
+      <if test="allSalary != null" >
+        all_salary = #{allSalary,jdbcType=INTEGER},
       </if>
-      <if test="pensionbase != null" >
-        pensionBase = #{pensionbase,jdbcType=INTEGER},
+      <if test="pensionBase != null" >
+        pension_base = #{pensionBase,jdbcType=INTEGER},
       </if>
-      <if test="pensionper != null" >
-        pensionPer = #{pensionper,jdbcType=REAL},
+      <if test="pensionRatio != null" >
+        pension_ratio = #{pensionRatio,jdbcType=REAL},
       </if>
-      <if test="createdate != null" >
-        createDate = #{createdate,jdbcType=TIMESTAMP},
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
       </if>
-      <if test="medicalbase != null" >
-        medicalBase = #{medicalbase,jdbcType=INTEGER},
+      <if test="medicalBase != null" >
+        medical_base = #{medicalBase,jdbcType=INTEGER},
       </if>
-      <if test="medicalper != null" >
-        medicalPer = #{medicalper,jdbcType=REAL},
+      <if test="medicalRatio != null" >
+        medical_ratio = #{medicalRatio,jdbcType=REAL},
       </if>
-      <if test="accumulationfundbase != null" >
-        accumulationFundBase = #{accumulationfundbase,jdbcType=INTEGER},
+      <if test="providentFundBase != null" >
+        provident_fund_base = #{providentFundBase,jdbcType=INTEGER},
       </if>
-      <if test="accumulationfundper != null" >
-        accumulationFundPer = #{accumulationfundper,jdbcType=REAL},
-      </if>
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
+      <if test="providentFundRatio != null" >
+        provident_fund_ratio = #{providentFundRatio,jdbcType=REAL},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.fatehole.office.model.Salary" >
     update salary
-    set basicSalary = #{basicsalary,jdbcType=INTEGER},
+    set name = #{name,jdbcType=VARCHAR},
+      basic_salary = #{basicSalary,jdbcType=INTEGER},
       bonus = #{bonus,jdbcType=INTEGER},
-      lunchSalary = #{lunchsalary,jdbcType=INTEGER},
-      trafficSalary = #{trafficsalary,jdbcType=INTEGER},
-      allSalary = #{allsalary,jdbcType=INTEGER},
-      pensionBase = #{pensionbase,jdbcType=INTEGER},
-      pensionPer = #{pensionper,jdbcType=REAL},
-      createDate = #{createdate,jdbcType=TIMESTAMP},
-      medicalBase = #{medicalbase,jdbcType=INTEGER},
-      medicalPer = #{medicalper,jdbcType=REAL},
-      accumulationFundBase = #{accumulationfundbase,jdbcType=INTEGER},
-      accumulationFundPer = #{accumulationfundper,jdbcType=REAL},
-      name = #{name,jdbcType=VARCHAR}
+      lunch_salary = #{lunchSalary,jdbcType=INTEGER},
+      traffic_salary = #{trafficSalary,jdbcType=INTEGER},
+      all_salary = #{allSalary,jdbcType=INTEGER},
+      pension_base = #{pensionBase,jdbcType=INTEGER},
+      pension_ratio = #{pensionRatio,jdbcType=REAL},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      medical_base = #{medicalBase,jdbcType=INTEGER},
+      medical_ratio = #{medicalRatio,jdbcType=REAL},
+      provident_fund_base = #{providentFundBase,jdbcType=INTEGER},
+      provident_fund_ratio = #{providentFundRatio,jdbcType=REAL}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

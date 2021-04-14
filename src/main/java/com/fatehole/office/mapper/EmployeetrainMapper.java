@@ -1,19 +1,19 @@
 package com.fatehole.office.mapper;
 
-import com.fatehole.office.model.Employeetrain;
+import com.fatehole.office.model.EmployeeTrain;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
-public interface EmployeetrainMapper {
+public interface EmployeeTrainMapper {
     int deleteByPrimaryKey(Integer id);
 
-    int insert(Employeetrain record);
+    int insert(EmployeeTrain record);
 
-    int insertSelective(Employeetrain record);
+    int insertSelective(EmployeeTrain record);
 
-    Employeetrain selectByPrimaryKey(Integer id);
+    EmployeeTrain selectByPrimaryKey(Integer id);
 
-    int updateByPrimaryKeySelective(Employeetrain record);
+    int updateByPrimaryKeySelective(EmployeeTrain record);
 
-    int updateByPrimaryKey(Employeetrain record);
+    int updateByPrimaryKey(EmployeeTrain record);
 }

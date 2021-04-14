@@ -5,13 +5,13 @@ public class Department {
 
     private String name;
 
-    private Integer parentid;
+    private Integer parentId;
 
-    private String deppath;
+    private String depPath;
 
     private Boolean enabled;
 
-    private Boolean isparent;
+    private Boolean parent;
 
     public Integer getId() {
         return id;
@@ -29,20 +29,20 @@ public class Department {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getParentid() {
-        return parentid;
+    public Integer getParentId() {
+        return parentId;
     }
 
-    public void setParentid(Integer parentid) {
-        this.parentid = parentid;
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 
-    public String getDeppath() {
-        return deppath;
+    public String getDepPath() {
+        return depPath;
     }
 
-    public void setDeppath(String deppath) {
-        this.deppath = deppath == null ? null : deppath.trim();
+    public void setDepPath(String depPath) {
+        this.depPath = depPath == null ? null : depPath.trim();
     }
 
     public Boolean getEnabled() {
@@ -53,11 +53,11 @@ public class Department {
         this.enabled = enabled;
     }
 
-    public Boolean getIsparent() {
-        return isparent;
+    public Boolean getParent() {
+        return parent;
     }
 
-    public void setIsparent(Boolean isparent) {
-        this.isparent = isparent;
+    public void setParent(Boolean parent) {
+        this.parent = parent;
     }
 }

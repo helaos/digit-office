@@ -2,16 +2,16 @@ package com.fatehole.office.model;
 
 import java.util.Date;
 
-public class Employeeremove {
+public class StaffTransfer {
     private Integer id;
 
     private Integer eid;
 
-    private Integer afterdepid;
+    private Integer afterDepartmentId;
 
-    private Integer afterjobid;
+    private Integer afterJobId;
 
-    private Date removedate;
+    private Date transferDate;
 
     private String reason;
 
@@ -33,28 +33,28 @@ public class Employeeremove {
         this.eid = eid;
     }
 
-    public Integer getAfterdepid() {
-        return afterdepid;
+    public Integer getAfterDepartmentId() {
+        return afterDepartmentId;
     }
 
-    public void setAfterdepid(Integer afterdepid) {
-        this.afterdepid = afterdepid;
+    public void setAfterDepartmentId(Integer afterDepartmentId) {
+        this.afterDepartmentId = afterDepartmentId;
     }
 
-    public Integer getAfterjobid() {
-        return afterjobid;
+    public Integer getAfterJobId() {
+        return afterJobId;
     }
 
-    public void setAfterjobid(Integer afterjobid) {
-        this.afterjobid = afterjobid;
+    public void setAfterJobId(Integer afterJobId) {
+        this.afterJobId = afterJobId;
     }
 
-    public Date getRemovedate() {
-        return removedate;
+    public Date getTransferDate() {
+        return transferDate;
     }
 
-    public void setRemovedate(Date removedate) {
-        this.removedate = removedate;
+    public void setTransferDate(Date transferDate) {
+        this.transferDate = transferDate;
     }
 
     public String getReason() {

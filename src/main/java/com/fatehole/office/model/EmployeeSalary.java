@@ -1,6 +1,6 @@
 package com.fatehole.office.model;
 
-public class EmpSalary {
+public class EmployeeSalary {
     private Integer id;
 
     private Integer eid;

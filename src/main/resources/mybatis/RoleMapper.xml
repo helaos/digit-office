@@ -4,10 +4,10 @@
   <resultMap id="BaseResultMap" type="com.fatehole.office.model.Role" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="nameZh" property="namezh" jdbcType="VARCHAR" />
+    <result column="name_zh" property="nameZh" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, nameZh
+    id, name, name_zh
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -20,9 +20,9 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.fatehole.office.model.Role" >
-    insert into role (id, name, nameZh
+    insert into role (id, name, name_zh
       )
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{namezh,jdbcType=VARCHAR}
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{nameZh,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.fatehole.office.model.Role" >
@@ -34,8 +34,8 @@
       <if test="name != null" >
         name,
       </if>
-      <if test="namezh != null" >
-        nameZh,
+      <if test="nameZh != null" >
+        name_zh,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -45,8 +45,8 @@
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="namezh != null" >
-        #{namezh,jdbcType=VARCHAR},
+      <if test="nameZh != null" >
+        #{nameZh,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -56,8 +56,8 @@
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="namezh != null" >
-        nameZh = #{namezh,jdbcType=VARCHAR},
+      <if test="nameZh != null" >
+        name_zh = #{nameZh,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -65,7 +65,7 @@
   <update id="updateByPrimaryKey" parameterType="com.fatehole.office.model.Role" >
     update role
     set name = #{name,jdbcType=VARCHAR},
-      nameZh = #{namezh,jdbcType=VARCHAR}
+      name_zh = #{nameZh,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

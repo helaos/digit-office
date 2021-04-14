@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fatehole.office.mapper.EmployeetrainMapper" >
-  <resultMap id="BaseResultMap" type="com.fatehole.office.model.Employeetrain" >
+<mapper namespace="com.fatehole.office.mapper.EmployeeTrainMapper" >
+  <resultMap id="BaseResultMap" type="com.fatehole.office.model.EmployeeTrain" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="eid" property="eid" jdbcType="INTEGER" />
-    <result column="trainDate" property="traindate" jdbcType="DATE" />
-    <result column="trainContent" property="traincontent" jdbcType="VARCHAR" />
+    <result column="train_date" property="trainDate" jdbcType="DATE" />
+    <result column="train_content" property="trainContent" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, eid, trainDate, trainContent, remark
+    id, eid, train_date, train_content, remark
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from employeetrain
+    from employee_train
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from employeetrain
+    delete from employee_train
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.fatehole.office.model.Employeetrain" >
-    insert into employeetrain (id, eid, trainDate, 
-      trainContent, remark)
-    values (#{id,jdbcType=INTEGER}, #{eid,jdbcType=INTEGER}, #{traindate,jdbcType=DATE}, 
-      #{traincontent,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.fatehole.office.model.EmployeeTrain" >
+    insert into employee_train (id, eid, train_date, 
+      train_content, remark)
+    values (#{id,jdbcType=INTEGER}, #{eid,jdbcType=INTEGER}, #{trainDate,jdbcType=DATE}, 
+      #{trainContent,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.fatehole.office.model.Employeetrain" >
-    insert into employeetrain
+  <insert id="insertSelective" parameterType="com.fatehole.office.model.EmployeeTrain" >
+    insert into employee_train
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -36,11 +36,11 @@
       <if test="eid != null" >
         eid,
       </if>
-      <if test="traindate != null" >
-        trainDate,
+      <if test="trainDate != null" >
+        train_date,
       </if>
-      <if test="traincontent != null" >
-        trainContent,
+      <if test="trainContent != null" >
+        train_content,
       </if>
       <if test="remark != null" >
         remark,
@@ -53,28 +53,28 @@
       <if test="eid != null" >
         #{eid,jdbcType=INTEGER},
       </if>
-      <if test="traindate != null" >
-        #{traindate,jdbcType=DATE},
+      <if test="trainDate != null" >
+        #{trainDate,jdbcType=DATE},
       </if>
-      <if test="traincontent != null" >
-        #{traincontent,jdbcType=VARCHAR},
+      <if test="trainContent != null" >
+        #{trainContent,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         #{remark,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fatehole.office.model.Employeetrain" >
-    update employeetrain
+  <update id="updateByPrimaryKeySelective" parameterType="com.fatehole.office.model.EmployeeTrain" >
+    update employee_train
     <set >
       <if test="eid != null" >
         eid = #{eid,jdbcType=INTEGER},
       </if>
-      <if test="traindate != null" >
-        trainDate = #{traindate,jdbcType=DATE},
+      <if test="trainDate != null" >
+        train_date = #{trainDate,jdbcType=DATE},
       </if>
-      <if test="traincontent != null" >
-        trainContent = #{traincontent,jdbcType=VARCHAR},
+      <if test="trainContent != null" >
+        train_content = #{trainContent,jdbcType=VARCHAR},
       </if>
       <if test="remark != null" >
         remark = #{remark,jdbcType=VARCHAR},
@@ -82,11 +82,11 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fatehole.office.model.Employeetrain" >
-    update employeetrain
+  <update id="updateByPrimaryKey" parameterType="com.fatehole.office.model.EmployeeTrain" >
+    update employee_train
     set eid = #{eid,jdbcType=INTEGER},
-      trainDate = #{traindate,jdbcType=DATE},
-      trainContent = #{traincontent,jdbcType=VARCHAR},
+      train_date = #{trainDate,jdbcType=DATE},
+      train_content = #{trainContent,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

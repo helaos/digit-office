@@ -4,35 +4,35 @@
   <resultMap id="BaseResultMap" type="com.fatehole.office.model.AdjustSalary" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="eid" property="eid" jdbcType="INTEGER" />
-    <result column="asDate" property="asdate" jdbcType="DATE" />
-    <result column="beforeSalary" property="beforesalary" jdbcType="INTEGER" />
-    <result column="afterSalary" property="aftersalary" jdbcType="INTEGER" />
+    <result column="adjust_date" property="adjustDate" jdbcType="DATE" />
+    <result column="before_salary" property="beforeSalary" jdbcType="INTEGER" />
+    <result column="after_salary" property="afterSalary" jdbcType="INTEGER" />
     <result column="reason" property="reason" jdbcType="VARCHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, eid, asDate, beforeSalary, afterSalary, reason, remark
+    id, eid, adjust_date, before_salary, after_salary, reason, remark
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from adjustsalary
+    from adjust_salary
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from adjustsalary
+    delete from adjust_salary
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.fatehole.office.model.AdjustSalary" >
-    insert into adjustsalary (id, eid, asDate, 
-      beforeSalary, afterSalary, reason, 
+    insert into adjust_salary (id, eid, adjust_date, 
+      before_salary, after_salary, reason, 
       remark)
-    values (#{id,jdbcType=INTEGER}, #{eid,jdbcType=INTEGER}, #{asdate,jdbcType=DATE}, 
-      #{beforesalary,jdbcType=INTEGER}, #{aftersalary,jdbcType=INTEGER}, #{reason,jdbcType=VARCHAR}, 
+    values (#{id,jdbcType=INTEGER}, #{eid,jdbcType=INTEGER}, #{adjustDate,jdbcType=DATE}, 
+      #{beforeSalary,jdbcType=INTEGER}, #{afterSalary,jdbcType=INTEGER}, #{reason,jdbcType=VARCHAR}, 
       #{remark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.fatehole.office.model.AdjustSalary" >
-    insert into adjustsalary
+    insert into adjust_salary
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -40,14 +40,14 @@
       <if test="eid != null" >
         eid,
       </if>
-      <if test="asdate != null" >
-        asDate,
+      <if test="adjustDate != null" >
+        adjust_date,
       </if>
-      <if test="beforesalary != null" >
-        beforeSalary,
+      <if test="beforeSalary != null" >
+        before_salary,
       </if>
-      <if test="aftersalary != null" >
-        afterSalary,
+      <if test="afterSalary != null" >
+        after_salary,
       </if>
       <if test="reason != null" >
         reason,
@@ -63,14 +63,14 @@
       <if test="eid != null" >
         #{eid,jdbcType=INTEGER},
       </if>
-      <if test="asdate != null" >
-        #{asdate,jdbcType=DATE},
+      <if test="adjustDate != null" >
+        #{adjustDate,jdbcType=DATE},
       </if>
-      <if test="beforesalary != null" >
-        #{beforesalary,jdbcType=INTEGER},
+      <if test="beforeSalary != null" >
+        #{beforeSalary,jdbcType=INTEGER},
       </if>
-      <if test="aftersalary != null" >
-        #{aftersalary,jdbcType=INTEGER},
+      <if test="afterSalary != null" >
+        #{afterSalary,jdbcType=INTEGER},
       </if>
       <if test="reason != null" >
         #{reason,jdbcType=VARCHAR},
@@ -81,19 +81,19 @@
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.fatehole.office.model.AdjustSalary" >
-    update adjustsalary
+    update adjust_salary
     <set >
       <if test="eid != null" >
         eid = #{eid,jdbcType=INTEGER},
       </if>
-      <if test="asdate != null" >
-        asDate = #{asdate,jdbcType=DATE},
+      <if test="adjustDate != null" >
+        adjust_date = #{adjustDate,jdbcType=DATE},
       </if>
-      <if test="beforesalary != null" >
-        beforeSalary = #{beforesalary,jdbcType=INTEGER},
+      <if test="beforeSalary != null" >
+        before_salary = #{beforeSalary,jdbcType=INTEGER},
       </if>
-      <if test="aftersalary != null" >
-        afterSalary = #{aftersalary,jdbcType=INTEGER},
+      <if test="afterSalary != null" >
+        after_salary = #{afterSalary,jdbcType=INTEGER},
       </if>
       <if test="reason != null" >
         reason = #{reason,jdbcType=VARCHAR},
@@ -105,11 +105,11 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.fatehole.office.model.AdjustSalary" >
-    update adjustsalary
+    update adjust_salary
     set eid = #{eid,jdbcType=INTEGER},
-      asDate = #{asdate,jdbcType=DATE},
-      beforeSalary = #{beforesalary,jdbcType=INTEGER},
-      afterSalary = #{aftersalary,jdbcType=INTEGER},
+      adjust_date = #{adjustDate,jdbcType=DATE},
+      before_salary = #{beforeSalary,jdbcType=INTEGER},
+      after_salary = #{afterSalary,jdbcType=INTEGER},
       reason = #{reason,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}

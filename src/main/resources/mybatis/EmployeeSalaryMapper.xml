@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fatehole.office.mapper.EmpSalaryMapper" >
-  <resultMap id="BaseResultMap" type="com.fatehole.office.model.EmpSalary" >
+<mapper namespace="com.fatehole.office.mapper.EmployeeSalaryMapper" >
+  <resultMap id="BaseResultMap" type="com.fatehole.office.model.EmployeeSalary" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="eid" property="eid" jdbcType="INTEGER" />
     <result column="sid" property="sid" jdbcType="INTEGER" />
@@ -12,19 +12,19 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from empsalary
+    from employee_salary
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from empsalary
+    delete from employee_salary
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.fatehole.office.model.EmpSalary" >
-    insert into empsalary (id, eid, sid)
+  <insert id="insert" parameterType="com.fatehole.office.model.EmployeeSalary" >
+    insert into employee_salary (id, eid, sid)
     values (#{id,jdbcType=INTEGER}, #{eid,jdbcType=INTEGER}, #{sid,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.fatehole.office.model.EmpSalary" >
-    insert into empsalary
+  <insert id="insertSelective" parameterType="com.fatehole.office.model.EmployeeSalary" >
+    insert into employee_salary
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -48,8 +48,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fatehole.office.model.EmpSalary" >
-    update empsalary
+  <update id="updateByPrimaryKeySelective" parameterType="com.fatehole.office.model.EmployeeSalary" >
+    update employee_salary
     <set >
       <if test="eid != null" >
         eid = #{eid,jdbcType=INTEGER},
@@ -60,8 +60,8 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fatehole.office.model.EmpSalary" >
-    update empsalary
+  <update id="updateByPrimaryKey" parameterType="com.fatehole.office.model.EmployeeSalary" >
+    update employee_salary
     set eid = #{eid,jdbcType=INTEGER},
       sid = #{sid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}

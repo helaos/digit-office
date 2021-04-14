@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fatehole.office.mapper.SysMsgMapper" >
-  <resultMap id="BaseResultMap" type="com.fatehole.office.model.SysMsg" >
+<mapper namespace="com.fatehole.office.mapper.SystemMsgMapper" >
+  <resultMap id="BaseResultMap" type="com.fatehole.office.model.SystemMsg" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="mid" property="mid" jdbcType="INTEGER" />
     <result column="type" property="type" jdbcType="INTEGER" />
-    <result column="hrid" property="hrid" jdbcType="INTEGER" />
+    <result column="hr_id" property="hrId" jdbcType="INTEGER" />
     <result column="state" property="state" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, mid, type, hrid, state
+    id, mid, type, hr_id, state
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from sysmsg
+    from system_msg
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from sysmsg
+    delete from system_msg
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.fatehole.office.model.SysMsg" >
-    insert into sysmsg (id, mid, type, 
-      hrid, state)
+  <insert id="insert" parameterType="com.fatehole.office.model.SystemMsg" >
+    insert into system_msg (id, mid, type, 
+      hr_id, state)
     values (#{id,jdbcType=INTEGER}, #{mid,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, 
-      #{hrid,jdbcType=INTEGER}, #{state,jdbcType=INTEGER})
+      #{hrId,jdbcType=INTEGER}, #{state,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.fatehole.office.model.SysMsg" >
-    insert into sysmsg
+  <insert id="insertSelective" parameterType="com.fatehole.office.model.SystemMsg" >
+    insert into system_msg
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -39,8 +39,8 @@
       <if test="type != null" >
         type,
       </if>
-      <if test="hrid != null" >
-        hrid,
+      <if test="hrId != null" >
+        hr_id,
       </if>
       <if test="state != null" >
         state,
@@ -56,16 +56,16 @@
       <if test="type != null" >
         #{type,jdbcType=INTEGER},
       </if>
-      <if test="hrid != null" >
-        #{hrid,jdbcType=INTEGER},
+      <if test="hrId != null" >
+        #{hrId,jdbcType=INTEGER},
       </if>
       <if test="state != null" >
         #{state,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fatehole.office.model.SysMsg" >
-    update sysmsg
+  <update id="updateByPrimaryKeySelective" parameterType="com.fatehole.office.model.SystemMsg" >
+    update system_msg
     <set >
       <if test="mid != null" >
         mid = #{mid,jdbcType=INTEGER},
@@ -73,8 +73,8 @@
       <if test="type != null" >
         type = #{type,jdbcType=INTEGER},
       </if>
-      <if test="hrid != null" >
-        hrid = #{hrid,jdbcType=INTEGER},
+      <if test="hrId != null" >
+        hr_id = #{hrId,jdbcType=INTEGER},
       </if>
       <if test="state != null" >
         state = #{state,jdbcType=INTEGER},
@@ -82,11 +82,11 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fatehole.office.model.SysMsg" >
-    update sysmsg
+  <update id="updateByPrimaryKey" parameterType="com.fatehole.office.model.SystemMsg" >
+    update system_msg
     set mid = #{mid,jdbcType=INTEGER},
       type = #{type,jdbcType=INTEGER},
-      hrid = #{hrid,jdbcType=INTEGER},
+      hr_id = #{hrId,jdbcType=INTEGER},
       state = #{state,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>

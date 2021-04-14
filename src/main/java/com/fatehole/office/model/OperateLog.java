@@ -2,14 +2,14 @@ package com.fatehole.office.model;
 
 import java.util.Date;
 
-public class OpLog {
+public class OperateLog {
     private Integer id;
 
-    private Date adddate;
+    private Date addDate;
 
     private String operate;
 
-    private Integer hrid;
+    private Integer hrId;
 
     public Integer getId() {
         return id;
@@ -19,12 +19,12 @@ public class OpLog {
         this.id = id;
     }
 
-    public Date getAdddate() {
-        return adddate;
+    public Date getAddDate() {
+        return addDate;
     }
 
-    public void setAdddate(Date adddate) {
-        this.adddate = adddate;
+    public void setAddDate(Date addDate) {
+        this.addDate = addDate;
     }
 
     public String getOperate() {
@@ -35,11 +35,11 @@ public class OpLog {
         this.operate = operate == null ? null : operate.trim();
     }
 
-    public Integer getHrid() {
-        return hrid;
+    public Integer getHrId() {
+        return hrId;
     }
 
-    public void setHrid(Integer hrid) {
-        this.hrid = hrid;
+    public void setHrId(Integer hrId) {
+        this.hrId = hrId;
     }
 }

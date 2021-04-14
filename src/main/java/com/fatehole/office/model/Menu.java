@@ -11,13 +11,13 @@ public class Menu {
 
     private String name;
 
-    private String iconcls;
+    private String iconCls;
 
-    private Boolean keepalive;
+    private Boolean keepAlive;
 
-    private Boolean requireauth;
+    private Boolean requireAuth;
 
-    private Integer parentid;
+    private Integer parentId;
 
     private Boolean enabled;
 
@@ -61,36 +61,36 @@ public class Menu {
         this.name = name == null ? null : name.trim();
     }
 
-    public String getIconcls() {
-        return iconcls;
+    public String getIconCls() {
+        return iconCls;
     }
 
-    public void setIconcls(String iconcls) {
-        this.iconcls = iconcls == null ? null : iconcls.trim();
+    public void setIconCls(String iconCls) {
+        this.iconCls = iconCls == null ? null : iconCls.trim();
     }
 
-    public Boolean getKeepalive() {
-        return keepalive;
+    public Boolean getKeepAlive() {
+        return keepAlive;
     }
 
-    public void setKeepalive(Boolean keepalive) {
-        this.keepalive = keepalive;
+    public void setKeepAlive(Boolean keepAlive) {
+        this.keepAlive = keepAlive;
     }
 
-    public Boolean getRequireauth() {
-        return requireauth;
+    public Boolean getRequireAuth() {
+        return requireAuth;
     }
 
-    public void setRequireauth(Boolean requireauth) {
-        this.requireauth = requireauth;
+    public void setRequireAuth(Boolean requireAuth) {
+        this.requireAuth = requireAuth;
     }
 
-    public Integer getParentid() {
-        return parentid;
+    public Integer getParentId() {
+        return parentId;
     }
 
-    public void setParentid(Integer parentid) {
-        this.parentid = parentid;
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 
     public Boolean getEnabled() {

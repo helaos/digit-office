@@ -2,14 +2,14 @@ package com.fatehole.office.model;
 
 import java.util.Date;
 
-public class Employeetrain {
+public class EmployeeTrain {
     private Integer id;
 
     private Integer eid;
 
-    private Date traindate;
+    private Date trainDate;
 
-    private String traincontent;
+    private String trainContent;
 
     private String remark;
 
@@ -29,20 +29,20 @@ public class Employeetrain {
         this.eid = eid;
     }
 
-    public Date getTraindate() {
-        return traindate;
+    public Date getTrainDate() {
+        return trainDate;
     }
 
-    public void setTraindate(Date traindate) {
-        this.traindate = traindate;
+    public void setTrainDate(Date trainDate) {
+        this.trainDate = trainDate;
     }
 
-    public String getTraincontent() {
-        return traincontent;
+    public String getTrainContent() {
+        return trainContent;
     }
 
-    public void setTraincontent(String traincontent) {
-        this.traincontent = traincontent == null ? null : traincontent.trim();
+    public void setTrainContent(String trainContent) {
+        this.trainContent = trainContent == null ? null : trainContent.trim();
     }
 
     public String getRemark() {

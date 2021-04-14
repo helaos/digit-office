@@ -1,13 +1,13 @@
 package com.fatehole.office.model;
 
-public class SysMsg {
+public class SystemMsg {
     private Integer id;
 
     private Integer mid;
 
     private Integer type;
 
-    private Integer hrid;
+    private Integer hrId;
 
     private Integer state;
 
@@ -35,12 +35,12 @@ public class SysMsg {
         this.type = type;
     }
 
-    public Integer getHrid() {
-        return hrid;
+    public Integer getHrId() {
+        return hrId;
     }
 
-    public void setHrid(Integer hrid) {
-        this.hrid = hrid;
+    public void setHrId(Integer hrId) {
+        this.hrId = hrId;
     }
 
     public Integer getState() {

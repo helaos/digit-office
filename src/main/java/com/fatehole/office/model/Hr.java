@@ -22,7 +22,7 @@ public class Hr implements UserDetails {
 
     private String password;
 
-    private String userface;
+    private String avatar;
 
     private String remark;
 
@@ -116,12 +116,12 @@ public class Hr implements UserDetails {
         this.password = password == null ? null : password.trim();
     }
 
-    public String getUserface() {
-        return userface;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setUserface(String userface) {
-        this.userface = userface == null ? null : userface.trim();
+    public void setAvatar(String avatar) {
+        this.avatar = avatar == null ? null : avatar.trim();
     }
 
     public String getRemark() {

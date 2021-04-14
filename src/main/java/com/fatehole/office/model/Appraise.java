@@ -7,11 +7,11 @@ public class Appraise {
 
     private Integer eid;
 
-    private Date appdate;
+    private Date appraiseDate;
 
-    private String appresult;
+    private String appraiseResult;
 
-    private String appcontent;
+    private String appraiseContent;
 
     private String remark;
 
@@ -31,28 +31,28 @@ public class Appraise {
         this.eid = eid;
     }
 
-    public Date getAppdate() {
-        return appdate;
+    public Date getAppraiseDate() {
+        return appraiseDate;
     }
 
-    public void setAppdate(Date appdate) {
-        this.appdate = appdate;
+    public void setAppraiseDate(Date appraiseDate) {
+        this.appraiseDate = appraiseDate;
     }
 
-    public String getAppresult() {
-        return appresult;
+    public String getAppraiseResult() {
+        return appraiseResult;
     }
 
-    public void setAppresult(String appresult) {
-        this.appresult = appresult == null ? null : appresult.trim();
+    public void setAppraiseResult(String appraiseResult) {
+        this.appraiseResult = appraiseResult == null ? null : appraiseResult.trim();
     }
 
-    public String getAppcontent() {
-        return appcontent;
+    public String getAppraiseContent() {
+        return appraiseContent;
     }
 
-    public void setAppcontent(String appcontent) {
-        this.appcontent = appcontent == null ? null : appcontent.trim();
+    public void setAppraiseContent(String appraiseContent) {
+        this.appraiseContent = appraiseContent == null ? null : appraiseContent.trim();
     }
 
     public String getRemark() {

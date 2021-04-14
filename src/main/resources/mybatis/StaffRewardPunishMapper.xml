@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fatehole.office.mapper.StaffRewardPunishMapper" >
+  <resultMap id="BaseResultMap" type="com.fatehole.office.model.StaffRewardPunish" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="eid" property="eid" jdbcType="INTEGER" />
+    <result column="reward_punish_date" property="rewardPunishDate" jdbcType="DATE" />
+    <result column="reward_punish_reason" property="rewardPunishReason" jdbcType="VARCHAR" />
+    <result column="reward_punish_point" property="rewardPunishPoint" jdbcType="INTEGER" />
+    <result column="reward_punish_type" property="rewardPunishType" jdbcType="INTEGER" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, eid, reward_punish_date, reward_punish_reason, reward_punish_point, reward_punish_type, 
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from staff_reward_punish
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from staff_reward_punish
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.fatehole.office.model.StaffRewardPunish" >
+    insert into staff_reward_punish (id, eid, reward_punish_date, 
+      reward_punish_reason, reward_punish_point, 
+      reward_punish_type, remark)
+    values (#{id,jdbcType=INTEGER}, #{eid,jdbcType=INTEGER}, #{rewardPunishDate,jdbcType=DATE}, 
+      #{rewardPunishReason,jdbcType=VARCHAR}, #{rewardPunishPoint,jdbcType=INTEGER}, 
+      #{rewardPunishType,jdbcType=INTEGER}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fatehole.office.model.StaffRewardPunish" >
+    insert into staff_reward_punish
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="eid != null" >
+        eid,
+      </if>
+      <if test="rewardPunishDate != null" >
+        reward_punish_date,
+      </if>
+      <if test="rewardPunishReason != null" >
+        reward_punish_reason,
+      </if>
+      <if test="rewardPunishPoint != null" >
+        reward_punish_point,
+      </if>
+      <if test="rewardPunishType != null" >
+        reward_punish_type,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="eid != null" >
+        #{eid,jdbcType=INTEGER},
+      </if>
+      <if test="rewardPunishDate != null" >
+        #{rewardPunishDate,jdbcType=DATE},
+      </if>
+      <if test="rewardPunishReason != null" >
+        #{rewardPunishReason,jdbcType=VARCHAR},
+      </if>
+      <if test="rewardPunishPoint != null" >
+        #{rewardPunishPoint,jdbcType=INTEGER},
+      </if>
+      <if test="rewardPunishType != null" >
+        #{rewardPunishType,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fatehole.office.model.StaffRewardPunish" >
+    update staff_reward_punish
+    <set >
+      <if test="eid != null" >
+        eid = #{eid,jdbcType=INTEGER},
+      </if>
+      <if test="rewardPunishDate != null" >
+        reward_punish_date = #{rewardPunishDate,jdbcType=DATE},
+      </if>
+      <if test="rewardPunishReason != null" >
+        reward_punish_reason = #{rewardPunishReason,jdbcType=VARCHAR},
+      </if>
+      <if test="rewardPunishPoint != null" >
+        reward_punish_point = #{rewardPunishPoint,jdbcType=INTEGER},
+      </if>
+      <if test="rewardPunishType != null" >
+        reward_punish_type = #{rewardPunishType,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fatehole.office.model.StaffRewardPunish" >
+    update staff_reward_punish
+    set eid = #{eid,jdbcType=INTEGER},
+      reward_punish_date = #{rewardPunishDate,jdbcType=DATE},
+      reward_punish_reason = #{rewardPunishReason,jdbcType=VARCHAR},
+      reward_punish_point = #{rewardPunishPoint,jdbcType=INTEGER},
+      reward_punish_type = #{rewardPunishType,jdbcType=INTEGER},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

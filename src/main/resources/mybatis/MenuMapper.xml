@@ -7,14 +7,14 @@
     <result column="path" property="path" jdbcType="VARCHAR" />
     <result column="component" property="component" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="iconCls" property="iconcls" jdbcType="VARCHAR" />
-    <result column="keepAlive" property="keepalive" jdbcType="BIT" />
-    <result column="requireAuth" property="requireauth" jdbcType="BIT" />
-    <result column="parentId" property="parentid" jdbcType="INTEGER" />
+    <result column="icon_cls" property="iconCls" jdbcType="VARCHAR" />
+    <result column="keep_alive" property="keepAlive" jdbcType="BIT" />
+    <result column="require_auth" property="requireAuth" jdbcType="BIT" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
     <result column="enabled" property="enabled" jdbcType="BIT" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, url, path, component, name, iconCls, keepAlive, requireAuth, parentId, enabled
+    id, url, path, component, name, icon_cls, keep_alive, require_auth, parent_id, enabled
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -28,12 +28,12 @@
   </delete>
   <insert id="insert" parameterType="com.fatehole.office.model.Menu" >
     insert into menu (id, url, path, 
-      component, name, iconCls, 
-      keepAlive, requireAuth, parentId, 
+      component, name, icon_cls, 
+      keep_alive, require_auth, parent_id, 
       enabled)
     values (#{id,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, 
-      #{component,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{iconcls,jdbcType=VARCHAR}, 
-      #{keepalive,jdbcType=BIT}, #{requireauth,jdbcType=BIT}, #{parentid,jdbcType=INTEGER}, 
+      #{component,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{iconCls,jdbcType=VARCHAR}, 
+      #{keepAlive,jdbcType=BIT}, #{requireAuth,jdbcType=BIT}, #{parentId,jdbcType=INTEGER}, 
       #{enabled,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.fatehole.office.model.Menu" >
@@ -54,17 +54,17 @@
       <if test="name != null" >
         name,
       </if>
-      <if test="iconcls != null" >
-        iconCls,
+      <if test="iconCls != null" >
+        icon_cls,
       </if>
-      <if test="keepalive != null" >
-        keepAlive,
+      <if test="keepAlive != null" >
+        keep_alive,
       </if>
-      <if test="requireauth != null" >
-        requireAuth,
+      <if test="requireAuth != null" >
+        require_auth,
       </if>
-      <if test="parentid != null" >
-        parentId,
+      <if test="parentId != null" >
+        parent_id,
       </if>
       <if test="enabled != null" >
         enabled,
@@ -86,17 +86,17 @@
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="iconcls != null" >
-        #{iconcls,jdbcType=VARCHAR},
+      <if test="iconCls != null" >
+        #{iconCls,jdbcType=VARCHAR},
       </if>
-      <if test="keepalive != null" >
-        #{keepalive,jdbcType=BIT},
+      <if test="keepAlive != null" >
+        #{keepAlive,jdbcType=BIT},
       </if>
-      <if test="requireauth != null" >
-        #{requireauth,jdbcType=BIT},
+      <if test="requireAuth != null" >
+        #{requireAuth,jdbcType=BIT},
       </if>
-      <if test="parentid != null" >
-        #{parentid,jdbcType=INTEGER},
+      <if test="parentId != null" >
+        #{parentId,jdbcType=INTEGER},
       </if>
       <if test="enabled != null" >
         #{enabled,jdbcType=BIT},
@@ -118,17 +118,17 @@
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="iconcls != null" >
-        iconCls = #{iconcls,jdbcType=VARCHAR},
+      <if test="iconCls != null" >
+        icon_cls = #{iconCls,jdbcType=VARCHAR},
       </if>
-      <if test="keepalive != null" >
-        keepAlive = #{keepalive,jdbcType=BIT},
+      <if test="keepAlive != null" >
+        keep_alive = #{keepAlive,jdbcType=BIT},
       </if>
-      <if test="requireauth != null" >
-        requireAuth = #{requireauth,jdbcType=BIT},
+      <if test="requireAuth != null" >
+        require_auth = #{requireAuth,jdbcType=BIT},
       </if>
-      <if test="parentid != null" >
-        parentId = #{parentid,jdbcType=INTEGER},
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=INTEGER},
       </if>
       <if test="enabled != null" >
         enabled = #{enabled,jdbcType=BIT},
@@ -142,10 +142,10 @@
       path = #{path,jdbcType=VARCHAR},
       component = #{component,jdbcType=VARCHAR},
       name = #{name,jdbcType=VARCHAR},
-      iconCls = #{iconcls,jdbcType=VARCHAR},
-      keepAlive = #{keepalive,jdbcType=BIT},
-      requireAuth = #{requireauth,jdbcType=BIT},
-      parentId = #{parentid,jdbcType=INTEGER},
+      icon_cls = #{iconCls,jdbcType=VARCHAR},
+      keep_alive = #{keepAlive,jdbcType=BIT},
+      require_auth = #{requireAuth,jdbcType=BIT},
+      parent_id = #{parentId,jdbcType=INTEGER},
       enabled = #{enabled,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>

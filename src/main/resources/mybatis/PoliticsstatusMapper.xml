@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.fatehole.office.mapper.PoliticsstatusMapper" >
-  <resultMap id="BaseResultMap" type="com.fatehole.office.model.Politicsstatus" >
+<mapper namespace="com.fatehole.office.mapper.PoliticsStatusMapper" >
+  <resultMap id="BaseResultMap" type="com.fatehole.office.model.PoliticsStatus" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
   </resultMap>
@@ -11,19 +11,19 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from politicsstatus
+    from politics_status
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from politicsstatus
+    delete from politics_status
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.fatehole.office.model.Politicsstatus" >
-    insert into politicsstatus (id, name)
+  <insert id="insert" parameterType="com.fatehole.office.model.PoliticsStatus" >
+    insert into politics_status (id, name)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.fatehole.office.model.Politicsstatus" >
-    insert into politicsstatus
+  <insert id="insertSelective" parameterType="com.fatehole.office.model.PoliticsStatus" >
+    insert into politics_status
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -41,8 +41,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.fatehole.office.model.Politicsstatus" >
-    update politicsstatus
+  <update id="updateByPrimaryKeySelective" parameterType="com.fatehole.office.model.PoliticsStatus" >
+    update politics_status
     <set >
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
@@ -50,8 +50,8 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.fatehole.office.model.Politicsstatus" >
-    update politicsstatus
+  <update id="updateByPrimaryKey" parameterType="com.fatehole.office.model.PoliticsStatus" >
+    update politics_status
     set name = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

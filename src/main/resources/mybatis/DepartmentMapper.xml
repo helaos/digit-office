@@ -4,13 +4,13 @@
   <resultMap id="BaseResultMap" type="com.fatehole.office.model.Department" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
-    <result column="parentId" property="parentid" jdbcType="INTEGER" />
-    <result column="depPath" property="deppath" jdbcType="VARCHAR" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="dep_path" property="depPath" jdbcType="VARCHAR" />
     <result column="enabled" property="enabled" jdbcType="BIT" />
-    <result column="isParent" property="isparent" jdbcType="BIT" />
+    <result column="parent" property="parent" jdbcType="BIT" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, parentId, depPath, enabled, isParent
+    id, name, parent_id, dep_path, enabled, parent
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -23,10 +23,10 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.fatehole.office.model.Department" >
-    insert into department (id, name, parentId, 
-      depPath, enabled, isParent)
-    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{parentid,jdbcType=INTEGER}, 
-      #{deppath,jdbcType=VARCHAR}, #{enabled,jdbcType=BIT}, #{isparent,jdbcType=BIT})
+    insert into department (id, name, parent_id, 
+      dep_path, enabled, parent)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{parentId,jdbcType=INTEGER}, 
+      #{depPath,jdbcType=VARCHAR}, #{enabled,jdbcType=BIT}, #{parent,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.fatehole.office.model.Department" >
     insert into department
@@ -37,17 +37,17 @@
       <if test="name != null" >
         name,
       </if>
-      <if test="parentid != null" >
-        parentId,
+      <if test="parentId != null" >
+        parent_id,
       </if>
-      <if test="deppath != null" >
-        depPath,
+      <if test="depPath != null" >
+        dep_path,
       </if>
       <if test="enabled != null" >
         enabled,
       </if>
-      <if test="isparent != null" >
-        isParent,
+      <if test="parent != null" >
+        parent,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -57,17 +57,17 @@
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="parentid != null" >
-        #{parentid,jdbcType=INTEGER},
+      <if test="parentId != null" >
+        #{parentId,jdbcType=INTEGER},
       </if>
-      <if test="deppath != null" >
-        #{deppath,jdbcType=VARCHAR},
+      <if test="depPath != null" >
+        #{depPath,jdbcType=VARCHAR},
       </if>
       <if test="enabled != null" >
         #{enabled,jdbcType=BIT},
       </if>
-      <if test="isparent != null" >
-        #{isparent,jdbcType=BIT},
+      <if test="parent != null" >
+        #{parent,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -77,17 +77,17 @@
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="parentid != null" >
-        parentId = #{parentid,jdbcType=INTEGER},
+      <if test="parentId != null" >
+        parent_id = #{parentId,jdbcType=INTEGER},
       </if>
-      <if test="deppath != null" >
-        depPath = #{deppath,jdbcType=VARCHAR},
+      <if test="depPath != null" >
+        dep_path = #{depPath,jdbcType=VARCHAR},
       </if>
       <if test="enabled != null" >
         enabled = #{enabled,jdbcType=BIT},
       </if>
-      <if test="isparent != null" >
-        isParent = #{isparent,jdbcType=BIT},
+      <if test="parent != null" >
+        parent = #{parent,jdbcType=BIT},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -95,10 +95,10 @@
   <update id="updateByPrimaryKey" parameterType="com.fatehole.office.model.Department" >
     update department
     set name = #{name,jdbcType=VARCHAR},
-      parentId = #{parentid,jdbcType=INTEGER},
-      depPath = #{deppath,jdbcType=VARCHAR},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      dep_path = #{depPath,jdbcType=VARCHAR},
       enabled = #{enabled,jdbcType=BIT},
-      isParent = #{isparent,jdbcType=BIT}
+      parent = #{parent,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

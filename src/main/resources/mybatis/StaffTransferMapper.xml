@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fatehole.office.mapper.StaffTransferMapper" >
+  <resultMap id="BaseResultMap" type="com.fatehole.office.model.StaffTransfer" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="eid" property="eid" jdbcType="INTEGER" />
+    <result column="after_department_id" property="afterDepartmentId" jdbcType="INTEGER" />
+    <result column="after_job_id" property="afterJobId" jdbcType="INTEGER" />
+    <result column="transfer_date" property="transferDate" jdbcType="DATE" />
+    <result column="reason" property="reason" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, eid, after_department_id, after_job_id, transfer_date, reason, remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from staff_transfer
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from staff_transfer
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.fatehole.office.model.StaffTransfer" >
+    insert into staff_transfer (id, eid, after_department_id, 
+      after_job_id, transfer_date, reason, 
+      remark)
+    values (#{id,jdbcType=INTEGER}, #{eid,jdbcType=INTEGER}, #{afterDepartmentId,jdbcType=INTEGER}, 
+      #{afterJobId,jdbcType=INTEGER}, #{transferDate,jdbcType=DATE}, #{reason,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fatehole.office.model.StaffTransfer" >
+    insert into staff_transfer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="eid != null" >
+        eid,
+      </if>
+      <if test="afterDepartmentId != null" >
+        after_department_id,
+      </if>
+      <if test="afterJobId != null" >
+        after_job_id,
+      </if>
+      <if test="transferDate != null" >
+        transfer_date,
+      </if>
+      <if test="reason != null" >
+        reason,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="eid != null" >
+        #{eid,jdbcType=INTEGER},
+      </if>
+      <if test="afterDepartmentId != null" >
+        #{afterDepartmentId,jdbcType=INTEGER},
+      </if>
+      <if test="afterJobId != null" >
+        #{afterJobId,jdbcType=INTEGER},
+      </if>
+      <if test="transferDate != null" >
+        #{transferDate,jdbcType=DATE},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fatehole.office.model.StaffTransfer" >
+    update staff_transfer
+    <set >
+      <if test="eid != null" >
+        eid = #{eid,jdbcType=INTEGER},
+      </if>
+      <if test="afterDepartmentId != null" >
+        after_department_id = #{afterDepartmentId,jdbcType=INTEGER},
+      </if>
+      <if test="afterJobId != null" >
+        after_job_id = #{afterJobId,jdbcType=INTEGER},
+      </if>
+      <if test="transferDate != null" >
+        transfer_date = #{transferDate,jdbcType=DATE},
+      </if>
+      <if test="reason != null" >
+        reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fatehole.office.model.StaffTransfer" >
+    update staff_transfer
+    set eid = #{eid,jdbcType=INTEGER},
+      after_department_id = #{afterDepartmentId,jdbcType=INTEGER},
+      after_job_id = #{afterJobId,jdbcType=INTEGER},
+      transfer_date = #{transferDate,jdbcType=DATE},
+      reason = #{reason,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

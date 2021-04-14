@@ -1,6 +1,6 @@
 package com.fatehole.office.model;
 
-public class Politicsstatus {
+public class PoliticsStatus {
     private Integer id;
 
     private String name;
