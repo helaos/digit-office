@@ -1,7 +1,9 @@
 package com.fatehole.office.mapper;
 
 import com.fatehole.office.model.Politicsstatus;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface PoliticsstatusMapper {
     int deleteByPrimaryKey(Integer id);
 

@@ -1,7 +1,9 @@
 package com.fatehole.office.mapper;
 
 import com.fatehole.office.model.MenuRole;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface MenuRoleMapper {
     int deleteByPrimaryKey(Integer id);
 

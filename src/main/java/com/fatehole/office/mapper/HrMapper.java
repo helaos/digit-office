@@ -1,7 +1,9 @@
 package com.fatehole.office.mapper;
 
 import com.fatehole.office.model.Hr;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface HrMapper {
     int deleteByPrimaryKey(Integer id);
 

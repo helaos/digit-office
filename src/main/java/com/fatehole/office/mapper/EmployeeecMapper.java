@@ -1,7 +1,9 @@
 package com.fatehole.office.mapper;
 
 import com.fatehole.office.model.Employeeec;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface EmployeeecMapper {
     int deleteByPrimaryKey(Integer id);
 

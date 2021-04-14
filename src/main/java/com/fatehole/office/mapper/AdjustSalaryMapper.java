@@ -1,7 +1,9 @@
 package com.fatehole.office.mapper;
 
 import com.fatehole.office.model.AdjustSalary;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface AdjustSalaryMapper {
     int deleteByPrimaryKey(Integer id);
 

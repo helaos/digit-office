@@ -1,7 +1,9 @@
 package com.fatehole.office.mapper;
 
 import com.fatehole.office.model.SysMsg;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface SysMsgMapper {
     int deleteByPrimaryKey(Integer id);
 

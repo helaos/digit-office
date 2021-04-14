@@ -1,7 +1,9 @@
 package com.fatehole.office.mapper;
 
 import com.fatehole.office.model.OpLog;
+import org.apache.ibatis.annotations.Mapper;
 
+@Mapper
 public interface OpLogMapper {
     int deleteByPrimaryKey(Integer id);
 
