@@ -2,11 +2,14 @@ package com.fatehole.office.service;
 
 import com.fatehole.office.mapper.HrMapper;
 import com.fatehole.office.model.Hr;
+import com.fatehole.office.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author helaos
@@ -25,6 +28,8 @@ public class HrService implements UserDetailsService {
         if (null == hr) {
             throw new UsernameNotFoundException("该用户不存在！");
         }
+        // 登录成功，赋值角色
+        hr.setRoles(hrMapper.getHrRolesById(hr.getId()));
         return hr;
     }
 }

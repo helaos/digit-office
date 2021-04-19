@@ -27,6 +27,11 @@
         from hr
         where username = #{username}
     </select>
+    <select id="getHrRolesById" resultType="com.fatehole.office.model.Role">
+      select r.id, r.name, r.name_zh
+      from role r, hr_role hrr
+      where hrr.rid = r.id and hrr.hr_id = #{hrId}
+    </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from hr
     where id = #{id,jdbcType=INTEGER}

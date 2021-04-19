@@ -1,7 +1,10 @@
 package com.fatehole.office.mapper;
 
 import com.fatehole.office.model.Hr;
+import com.fatehole.office.model.Role;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 @Mapper
 public interface HrMapper {
@@ -18,4 +21,6 @@ public interface HrMapper {
     int updateByPrimaryKey(Hr record);
 
     Hr loadUserByUsername(String username);
+
+    List<Role> getHrRolesById(Integer hrId);
 }

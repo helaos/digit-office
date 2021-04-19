@@ -8,10 +8,12 @@
     <result column="component" property="component" jdbcType="VARCHAR" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="icon_cls" property="iconCls" jdbcType="VARCHAR" />
-    <result column="keep_alive" property="keepAlive" jdbcType="BIT" />
-    <result column="require_auth" property="requireAuth" jdbcType="BIT" />
     <result column="parent_id" property="parentId" jdbcType="INTEGER" />
     <result column="enabled" property="enabled" jdbcType="BIT" />
+    <association property="meta" javaType="com.fatehole.office.model.Meta">
+      <result column="keep_alive2" property="keepAlive" jdbcType="BIT" />
+      <result column="require_auth2" property="requireAuth" jdbcType="BIT" />
+    </association>
   </resultMap>
   <sql id="Base_Column_List" >
     id, url, path, component, name, icon_cls, keep_alive, require_auth, parent_id, enabled
@@ -21,6 +23,61 @@
     <include refid="Base_Column_List" />
     from menu
     where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <resultMap id="MenusMap" type="com.fatehole.office.model.Menu" extends="BaseResultMap">
+    <collection property="children" ofType="com.fatehole.office.model.Menu">
+      <id column="id2" property="id" jdbcType="INTEGER" />
+      <result column="path2" property="path" jdbcType="VARCHAR" />
+      <result column="component2" property="component" jdbcType="VARCHAR" />
+      <result column="name2" property="name" jdbcType="VARCHAR" />
+      <result column="icon_cls2" property="iconCls" jdbcType="VARCHAR" />
+      <result column="parent_id2" property="parentId" jdbcType="INTEGER" />
+      <result column="enabled2" property="enabled" jdbcType="BIT" />
+      <association property="meta" javaType="com.fatehole.office.model.Meta">
+        <result column="keep_alive2" property="keepAlive" jdbcType="BIT" />
+        <result column="require_auth2" property="requireAuth" jdbcType="BIT" />
+      </association>
+    </collection>
+  </resultMap>
+  <select id="selectMenusByHrId" resultMap="MenusMap">
+    select distinct
+      m1.id, m1.url, m1.path, m1.component, m1.name, m1.icon_cls, m1.keep_alive, m1.require_auth, m1.parent_id, m1.enabled,
+      m2.id as id2, m2.path as path2, m2.component as component2, m2.name as name2, m2.icon_cls as icon_cls2, m2.keep_alive as keep_alive2, m2.require_auth as require_auth2, m2.parent_id as parent_id2, m2.enabled as enabled2
+    from
+      menu m1,
+      menu m2,
+      hr_role hrr,
+      menu_role mr
+    where
+      m1.id = m2.parent_id
+      and
+      hrr.hr_id = #{hrId}
+      and
+      hrr.rid = mr.rid
+      and
+      mr.mid = m2.id
+      and
+      m2.enabled = true
+  </select>
+  <resultMap id="MenusWithRole" type="com.fatehole.office.model.Menu" extends="BaseResultMap">
+    <collection property="roles" ofType="com.fatehole.office.model.Role">
+      <id column="roleId" property="id"/>
+      <result column="roleName" property="name"/>
+      <result column="roleNameZh" property="nameZh"/>
+    </collection>
+  </resultMap>
+  <select id="selectAllMenusWithRole" resultMap="MenusWithRole" >
+    select
+        m.id, m.url, m.path, m.component, m.name, m.icon_cls, m.keep_alive, m.require_auth, m.parent_id, m.enabled,
+        r.id as roleId, r.name as roleName, r.name_zh as roleNameZh
+    from
+        menu m, menu_role mr, role r
+    where
+        m.id = mr.mid
+    and
+        mr.rid = r.id
+    order by m.id
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from menu

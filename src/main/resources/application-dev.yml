@@ -10,3 +10,5 @@ spring:
 mybatis:
   mapper-locations: classpath*:mybatis/**Mapper.xml
   type-aliases-package: com.fatehole.office.model
+  configuration:
+    map-underscore-to-camel-case: true

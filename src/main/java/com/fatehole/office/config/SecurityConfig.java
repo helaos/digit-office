@@ -8,11 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.*;
+import org.springframework.security.config.annotation.ObjectPostProcessor;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.access.intercept.FilterSecurityInterceptor;
+
 import java.io.PrintWriter;
 
 /**
@@ -24,7 +28,13 @@ import java.io.PrintWriter;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    HrService hrService;
+    private HrService hrService;
+
+    @Autowired
+    private CustomSecurityMetadataSource customSecurityMetadataSource;
+
+    @Autowired
+    private CustomAccessDecisionManager customAccessDecisionManager;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -37,9 +47,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers("/login");
+    }
+
+    @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .anyRequest().authenticated()
+                // .anyRequest().authenticated()
+                .withObjectPostProcessor(new ObjectPostProcessor<FilterSecurityInterceptor>() {
+                    @Override
+                    public <O extends FilterSecurityInterceptor> O postProcess(O object) {
+                        object.setAccessDecisionManager(customAccessDecisionManager);
+                        object.setSecurityMetadataSource(customSecurityMetadataSource);
+                        return object;
+                    }
+                })
                 .and()
                 .formLogin()
                 .usernameParameter("username")
@@ -91,6 +114,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .and()
                 // 为了方便开发，暂时将csrf关闭
-                .csrf().disable();
+                .csrf().disable().exceptionHandling()
+                // 没有认证时，在这里处理结果，不要重定向
+                .authenticationEntryPoint((request, response, authException) -> {
+                    response.setContentType("application/json;charset=utf-8");
+                    PrintWriter out = response.getWriter();
+                    ResponseBean error = ResponseBean.error("访问失败！");
+                    if (authException instanceof InsufficientAuthenticationException) {
+                        error.setMsg("请求失败，请联系管理员！");
+                    }
+                    out.write(new ObjectMapper().writeValueAsString(error));
+                    out.flush();
+                    out.close();
+                });
     }
 }

@@ -1,5 +1,7 @@
 package com.fatehole.office.model;
 
+import java.util.List;
+
 public class Menu {
     private Integer id;
 
@@ -13,13 +15,23 @@ public class Menu {
 
     private String iconCls;
 
-    private Boolean keepAlive;
-
-    private Boolean requireAuth;
+    private Meta meta;
 
     private Integer parentId;
 
     private Boolean enabled;
+
+    private List<Menu> children;
+
+    private List<Role> roles;
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
 
     public Integer getId() {
         return id;
@@ -69,20 +81,20 @@ public class Menu {
         this.iconCls = iconCls == null ? null : iconCls.trim();
     }
 
-    public Boolean getKeepAlive() {
-        return keepAlive;
+    public Meta getMeta() {
+        return meta;
     }
 
-    public void setKeepAlive(Boolean keepAlive) {
-        this.keepAlive = keepAlive;
+    public void setMeta(Meta meta) {
+        this.meta = meta;
     }
 
-    public Boolean getRequireAuth() {
-        return requireAuth;
+    public List<Menu> getChildren() {
+        return children;
     }
 
-    public void setRequireAuth(Boolean requireAuth) {
-        this.requireAuth = requireAuth;
+    public void setChildren(List<Menu> children) {
+        this.children = children;
     }
 
     public Integer getParentId() {
